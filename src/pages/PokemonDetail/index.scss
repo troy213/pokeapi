@@ -1,0 +1,107 @@
+.pokemon-detail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: $color-primary-light;
+  padding: 1rem;
+  gap: 1rem;
+
+  &__detail {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 720px;
+    gap: 1rem;
+  }
+
+  &__image-container {
+    height: 200px;
+    width: 200px;
+    padding: 1rem;
+
+    & img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+  }
+
+  &__detail-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+  }
+
+  &__basic {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  &__misc {
+    padding: 1rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    background-color: $color-light;
+    border-radius: 0.5rem;
+  }
+
+  &__misc-detail-container {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  &__misc-detail {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  &__misc-ability {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  &__stats-container {
+    background-color: $color-light;
+    padding: 2rem;
+    border-radius: 0.5rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 720px;
+  }
+
+  &__stats {
+    display: flex;
+    gap: 1rem;
+
+    & p {
+      width: 40px;
+    }
+  }
+
+  &__bar-chart {
+    flex: 1;
+    background-color: $color-primary-light;
+    position: relative;
+    border-radius: 0.5rem;
+    overflow: hidden;
+  }
+
+  &__bar-chart-bar {
+    height: 100%;
+    background-color: $color-primary-dark;
+  }
+}

@@ -22,6 +22,7 @@ html {
 body {
   font-family: 'Open Sans', sans-serif;
   min-width: 360px;
+  color: $color-primary-dark;
 }
 
 @mixin gradient($direction, $list) {

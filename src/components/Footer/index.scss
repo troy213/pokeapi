@@ -1,0 +1,15 @@
+.footer {
+  background-color: $color-primary-dark;
+  padding: 1rem 1rem 2rem;
+
+  &__title {
+    position: relative;
+    font-family: 'Pokemon Solid', 'Open Sans', sans-serif;
+    color: $color-light !important;
+    letter-spacing: 0.1em;
+  }
+
+  &__copyright-mobile--hidden {
+    display: none;
+  }
+}

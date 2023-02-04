@@ -1,0 +1,40 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: $color-primary-dark;
+  padding: 1rem;
+
+  &__title {
+    position: relative;
+    font-family: 'Pokemon Solid', 'Open Sans', sans-serif;
+    letter-spacing: 0.1em;
+    color: $color-light !important;
+    height: 33px;
+    top: -10px; // need to add this value because default behaviour of 'Pokemon Solid' font
+  }
+
+  &__search-form {
+    display: flex;
+  }
+
+  &__search-input {
+    border-top-left-radius: 0.5em;
+    border-bottom-left-radius: 0.5em;
+    border: none;
+    padding: 0.5em;
+  }
+
+  &__search-button {
+    background-color: $color-secondary;
+    border: none;
+    border-top-right-radius: 0.5em;
+    border-bottom-right-radius: 0.5em;
+    padding: 0.5em;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $color-secondary-light;
+    }
+  }
+}
