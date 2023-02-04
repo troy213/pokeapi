@@ -1,4 +1,14 @@
 .not-found {
   background-color: $color-primary-dark;
   min-height: 100vh;
+
+  &__font {
+    font-family: 'Pokemon Solid', 'Open Sans', 'sans-serif';
+  }
+
+  &__pokeball {
+    position: relative;
+    height: 48px;
+    top: 8px;
+  }
 }
