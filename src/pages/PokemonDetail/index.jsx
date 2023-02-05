@@ -60,7 +60,7 @@ const PokemonDetail = () => {
             TYPE_COLOR[mainType] ?? 'bg--default'
           }`}
         >
-          <img src={sprite} alt='pokemon' />
+          <img src={sprite ?? missingNoPng} alt='pokemon' />
         </div>
         <div className='pokemon-detail__detail-container'>
           <div className='pokemon-detail__basic'>
