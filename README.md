@@ -3,12 +3,16 @@
 </div>
 
 <div align='center'>
-   <p>1. Proposed wireframe and design</p>
+   <p align='left'><strong>1. Proposed wireframe and design</strong></p>
    <img src="https://github.com/troy213/pokeapi/blob/media/Figma.jpg" />
-   <p>2. In app desktop result</p>
+   <br />
+   <hr />
+   <p><strong>2. In app desktop result</strong></p>
    <img src="https://github.com/troy213/pokeapi/blob/media/1.png" />
    <img src="https://github.com/troy213/pokeapi/blob/media/2.png" />
-   <p>2. In app mobile result</p>
+   <br />
+   <hr />
+   <p><strong>3. In app mobile result</strong></p>
    <img src="https://github.com/troy213/pokeapi/blob/media/3.png" />
    <img src="https://github.com/troy213/pokeapi/blob/media/4.png" />
 </div>
