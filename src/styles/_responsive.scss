@@ -1,0 +1,32 @@
+@include media-desktop {
+  .card {
+    height: 320px;
+    width: 200px;
+
+    &__image-container {
+      height: 200px;
+    }
+  }
+
+  .pokemon-detail {
+    &__detail {
+      flex-direction: row;
+    }
+
+    &__image-container {
+      height: 100%;
+    }
+
+    &__detail-container {
+      width: auto;
+      flex: 1;
+    }
+
+    &__detail-container,
+    &__basic,
+    &__misc,
+    &__misc-ability {
+      align-items: flex-start;
+    }
+  }
+}

@@ -38,7 +38,7 @@ const Dashboard = () => {
     )
 
   return (
-    <section className='dashboard flex-1'>
+    <section className='dashboard flex-1 flex-justify-center'>
       <main className='dashboard__content'>
         {data.map((pokemon) => {
           const {
