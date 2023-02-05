@@ -1,137 +1,128 @@
-import { missingNoPng } from '../../assets/images'
+import { useState, useEffect } from 'react'
+import { toast } from 'react-toastify'
+import { useParams } from 'react-router-dom'
+import axios from '../../api/axios'
 
-const STATS = [
-  {
-    base_stat: 45,
-    effort: 0,
-    stat: {
-      name: 'hp',
-      url: 'https://pokeapi.co/api/v2/stat/1/',
-    },
-  },
-  {
-    base_stat: 49,
-    effort: 0,
-    stat: {
-      name: 'attack',
-      url: 'https://pokeapi.co/api/v2/stat/2/',
-    },
-  },
-  {
-    base_stat: 49,
-    effort: 0,
-    stat: {
-      name: 'defense',
-      url: 'https://pokeapi.co/api/v2/stat/3/',
-    },
-  },
-  {
-    base_stat: 65,
-    effort: 1,
-    stat: {
-      name: 'special-attack',
-      url: 'https://pokeapi.co/api/v2/stat/4/',
-    },
-  },
-  {
-    base_stat: 65,
-    effort: 0,
-    stat: {
-      name: 'special-defense',
-      url: 'https://pokeapi.co/api/v2/stat/5/',
-    },
-  },
-  {
-    base_stat: 45,
-    effort: 0,
-    stat: {
-      name: 'speed',
-      url: 'https://pokeapi.co/api/v2/stat/6/',
-    },
-  },
-]
+import PokemonStats from './PokemonStats'
+import { Spinner } from '../../components'
+import { missingNoPng } from '../../assets/images'
+import { hectogramToKilogram, decimeterToMeter } from '../../utils'
+import { TYPE_COLOR } from '../../data/consts'
 
 const PokemonDetail = () => {
+  const [data, setData] = useState(null)
+  const [isLoading, setIsLoading] = useState(true)
+
+  const sprite = data
+    ? data.sprites.front_default || data.sprites.front_shiny
+    : missingNoPng
+
+  const mainType = data ? data.types[0].type.name : null
+
+  const params = useParams()
+
+  useEffect(() => {
+    setIsLoading(true)
+    const getPokemonDetail = async () => {
+      try {
+        const response = await axios.get(`/pokemon/${params.id}`)
+        setData(response.data)
+        setIsLoading(false)
+      } catch (error) {
+        setIsLoading(false)
+      }
+    }
+
+    getPokemonDetail()
+  }, [])
+
+  if (isLoading)
+    return (
+      <section className='pokemon-detail flex-1 flex-justify-center'>
+        <Spinner />
+      </section>
+    )
+
+  if (!data)
+    return (
+      <section className='pokemon-detail flex-1 flex-justify-center'>
+        <p className='text-8 text-bold'>Aww, snap!</p>
+        <p className=''>Pokemon is missing :(</p>
+      </section>
+    )
+
   return (
     <section className='pokemon-detail flex-1'>
       <div className='pokemon-detail__detail'>
-        <div className='pokemon-detail__image-container bg--default'>
-          <img src={missingNoPng} alt='pokemon' />
+        <div
+          className={`pokemon-detail__image-container ${
+            TYPE_COLOR[mainType] ?? 'bg--default'
+          }`}
+        >
+          <img src={sprite} alt='pokemon' />
         </div>
         <div className='pokemon-detail__detail-container'>
           <div className='pokemon-detail__basic'>
-            <p className='text-3 text-light'>No.1</p>
-            <p className='text-6 text-bold text-capitalize'>bulbasaur</p>
+            <p className='text-3 text-light'>No.{data.id}</p>
+            <p className='text-6 text-bold text-capitalize'>{data.name}</p>
             <div className='flex gap-2'>
-              <p className='tag bg--grass'>grass</p>
-              <p className='tag bg--poison'>poison</p>
+              {data.types.map((type, index) => {
+                const {
+                  type: { name },
+                } = type
+                return (
+                  <p
+                    className={`tag ${TYPE_COLOR[name] ?? 'bg--default'}`}
+                    key={index}
+                  >
+                    {name}
+                  </p>
+                )
+              })}
             </div>
           </div>
           <div className='pokemon-detail__misc'>
             <div className='pokemon-detail__misc-detail-container'>
               <div className='pokemon-detail__misc-detail'>
                 <p className='text-3 text-light'>Height</p>
-                <p>0.7 m</p>
+                <p>{decimeterToMeter(data.height)} m</p>
               </div>
               <div className='pokemon-detail__misc-detail'>
                 <p className='text-3 text-light'>Weight</p>
-                <p>6.9 kg</p>
+                <p>{hectogramToKilogram(data.weight)} kg</p>
               </div>
               <div className='pokemon-detail__misc-detail'>
                 <p className='text-3 text-light'>Species</p>
-                <p className='text-capitalize'>bulbasaur</p>
+                <p className='text-capitalize'>{data.species.name}</p>
               </div>
             </div>
             <div className='pokemon-detail__misc-ability'>
               <p className='text-3 text-light'>Ability</p>
               <div className='flex gap-2'>
-                <p className='tag bg--default'>overgrow</p>
-                <p className='tag bg--disabled'>chlorophyll</p>
+                {data.abilities.map((ability, index) => {
+                  const {
+                    ability: { name },
+                    is_hidden,
+                  } = ability
+
+                  return (
+                    <p
+                      className={`tag ${
+                        is_hidden ? 'bg--disabled' : 'bg--default'
+                      }`}
+                      key={index}
+                    >
+                      {name}
+                    </p>
+                  )
+                })}
               </div>
             </div>
           </div>
         </div>
       </div>
-      <Stats stats={STATS} />
+      <PokemonStats stats={data.stats} />
     </section>
-  )
-}
-
-const Stats = ({ stats }) => {
-  const STATS_ENUM = {
-    hp: 'HP',
-    attack: 'ATK',
-    defense: 'DEF',
-    'special-attack': 'SATK',
-    'special-defense': 'SDEF',
-    speed: 'SPD',
-  }
-
-  return (
-    <div className='pokemon-detail__stats-container'>
-      <p className='text-bold text-center'>Base Stats</p>
-      {stats.map((item, index) => {
-        const MAX_STAT = 250
-        const {
-          base_stat,
-          stat: { name },
-        } = item
-        const barWidthPercent = Math.floor((base_stat / MAX_STAT) * 100)
-
-        return (
-          <div className='pokemon-detail__stats' key={index}>
-            <p className='text-uppercase text-bold'>{STATS_ENUM[name]}</p>
-            <p className='text-light text-center'>{base_stat}</p>
-            <div className='pokemon-detail__bar-chart'>
-              <div
-                className='pokemon-detail__bar-chart-bar'
-                style={{ width: `${barWidthPercent}%` }}
-              ></div>
-            </div>
-          </div>
-        )
-      })}
-    </div>
   )
 }
 
