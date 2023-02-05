@@ -7,12 +7,12 @@
    <img src="https://github.com/troy213/pokeapi/blob/media/Figma.jpg" />
    <br />
    <hr />
-   <p><strong>2. In app desktop result</strong></p>
+   <p align='left'><strong>2. In app desktop result</strong></p>
    <img src="https://github.com/troy213/pokeapi/blob/media/1.png" />
    <img src="https://github.com/troy213/pokeapi/blob/media/2.png" />
    <br />
    <hr />
-   <p><strong>3. In app mobile result</strong></p>
+   <p align='left'><strong>3. In app mobile result</strong></p>
    <img src="https://github.com/troy213/pokeapi/blob/media/3.png" />
    <img src="https://github.com/troy213/pokeapi/blob/media/4.png" />
 </div>
