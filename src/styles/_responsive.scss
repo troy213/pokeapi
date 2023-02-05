@@ -12,6 +12,10 @@
     }
   }
 
+  .navbar {
+    padding: 1rem 2rem;
+  }
+
   .pokemon-detail {
     &__detail {
       flex-direction: row;
@@ -31,6 +35,16 @@
     &__misc,
     &__misc-ability {
       align-items: flex-start;
+    }
+  }
+
+  .pagination {
+    gap: 0.5rem;
+
+    &__item {
+      &:not(:first-child):not(:last-child) .pagination__link {
+        padding: 0.5em 1em;
+      }
     }
   }
 

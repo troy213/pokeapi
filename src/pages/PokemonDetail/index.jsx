@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react'
-import { toast } from 'react-toastify'
 import { useParams } from 'react-router-dom'
 import axios from '../../api/axios'
 
