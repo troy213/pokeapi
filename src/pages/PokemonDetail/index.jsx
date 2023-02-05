@@ -29,12 +29,13 @@ const PokemonDetail = () => {
         setData(response.data)
         setIsLoading(false)
       } catch (error) {
+        setData(null)
         setIsLoading(false)
       }
     }
 
     getPokemonDetail()
-  }, [])
+  }, [params])
 
   if (isLoading)
     return (

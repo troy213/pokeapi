@@ -5,7 +5,7 @@ const PokemonStats = ({ stats }) => {
     <div className='pokemon-detail__stats-container'>
       <p className='text-bold text-center'>Base Stats</p>
       {stats.map((item, index) => {
-        const MAX_STAT = 250
+        const MAX_STAT = 150
         const {
           base_stat,
           stat: { name },
