@@ -6,7 +6,6 @@ export const fetchPokemonDetail = createAsyncThunk(
   async (arg) => {
     const { params } = arg
     const response = await axios.get(`/pokemon/${params.id}`)
-    console.log(response)
     return response.data
   }
 )
