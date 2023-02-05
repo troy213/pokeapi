@@ -1,7 +1,7 @@
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
-import axios from '../../api/axios'
-
+import { useDispatch, useSelector } from 'react-redux'
+import { fetchPokemonDetail } from '../../store/pokemon-detail-slice'
 import PokemonStats from './PokemonStats'
 import { Spinner } from '../../components'
 import { missingNoPng } from '../../assets/images'
@@ -9,8 +9,8 @@ import { hectogramToKilogram, decimeterToMeter } from '../../utils'
 import { TYPE_COLOR } from '../../data/consts'
 
 const PokemonDetail = () => {
-  const [data, setData] = useState(null)
-  const [isLoading, setIsLoading] = useState(true)
+  const dispatch = useDispatch()
+  const { data, isLoading } = useSelector((state) => state.pokemonDetail)
 
   const sprite = data
     ? data.sprites.front_default || data.sprites.front_shiny
@@ -21,19 +21,7 @@ const PokemonDetail = () => {
   const params = useParams()
 
   useEffect(() => {
-    setIsLoading(true)
-    const getPokemonDetail = async () => {
-      try {
-        const response = await axios.get(`/pokemon/${params.id}`)
-        setData(response.data)
-        setIsLoading(false)
-      } catch (error) {
-        setData(null)
-        setIsLoading(false)
-      }
-    }
-
-    getPokemonDetail()
+    dispatch(fetchPokemonDetail({ params }))
   }, [params])
 
   if (isLoading)

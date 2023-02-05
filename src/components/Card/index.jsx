@@ -17,7 +17,7 @@ const Card = ({ detail }) => {
       </div>
       <div className='card__detail flex-column flex-justify-center flex-align-center flex-1 gap-2'>
         <p className='text-3 text-light'>No.{detail.id}</p>
-        <p className='text-bold'>{detail.name}</p>
+        <p className='text-bold text-capitalize'>{detail.name}</p>
         <Link
           to={`/pokemon-detail/${detail.name}`}
           className='btn btn-primary text-3 text-color-light'

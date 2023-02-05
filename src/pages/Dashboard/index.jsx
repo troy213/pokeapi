@@ -1,48 +1,25 @@
 import { useState, useEffect } from 'react'
-import { toast } from 'react-toastify'
+import { useDispatch, useSelector } from 'react-redux'
 import ReactPaginate from 'react-paginate'
-import axios from '../../api/axios'
 import PokemonList from './PokemonList'
+import { fetchPokemon } from '../../store/pokemon-slice'
 
 const ITEM_PER_PAGE = 20
 
 const Dashboard = () => {
-  const [data, setData] = useState([])
-  const [totalData, setTotalData] = useState(0)
-  const [pageCount, setPageCount] = useState(0)
   const [itemOffset, setItemOffset] = useState(0)
-  const [isLoading, setIsLoading] = useState(true)
+
+  const dispatch = useDispatch()
+  const { count, pageCount, data, isLoading } = useSelector(
+    (state) => state.pokemon
+  )
 
   useEffect(() => {
-    setIsLoading(true)
-    const getPokemons = async () => {
-      try {
-        const response = await axios.get(
-          `/pokemon/?offset=${itemOffset}&limit=${ITEM_PER_PAGE}`
-        )
-        const count = response.data.count
-        const urls = response.data.results.map((pokemon) => pokemon.url)
-        const promises = urls.map(async (url) => {
-          const response = await axios.get(url)
-          return response.data
-        })
-        const results = await Promise.all(promises)
-        setData(results)
-        setTotalData(count)
-        setPageCount(Math.ceil(count / ITEM_PER_PAGE))
-        setIsLoading(false)
-      } catch (error) {
-        setIsLoading(false)
-        console.error(error)
-        toast.error('something went wrong')
-      }
-    }
-
-    getPokemons()
+    dispatch(fetchPokemon({ offset: itemOffset, limit: ITEM_PER_PAGE }))
   }, [itemOffset])
 
   const handlePageClick = (e) => {
-    const newOffset = (e.selected * ITEM_PER_PAGE) % totalData
+    const newOffset = (e.selected * ITEM_PER_PAGE) % count
     setItemOffset(newOffset)
   }
 

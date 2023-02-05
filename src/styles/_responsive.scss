@@ -16,6 +16,12 @@
     padding: 1rem 2rem;
   }
 
+  .dashboard {
+    &__content {
+      gap: 2rem;
+    }
+  }
+
   .pokemon-detail {
     &__detail {
       flex-direction: row;
