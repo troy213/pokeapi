@@ -7,15 +7,16 @@
    <img src="https://github.com/troy213/pokeapi/blob/media/Figma.jpg" />
    <p>2. In app desktop result</p>
    <img src="https://github.com/troy213/pokeapi/blob/media/1.png" />
-   <img src="https://github.com/troy213/pokeapi/blob/media/1.png" />
+   <img src="https://github.com/troy213/pokeapi/blob/media/2.png" />
    <p>2. In app mobile result</p>
-   <img src="https://github.com/troy213/pokeapi/blob/media/1.png" />
-   <img src="https://github.com/troy213/pokeapi/blob/media/1.png" />
+   <img src="https://github.com/troy213/pokeapi/blob/media/3.png" />
+   <img src="https://github.com/troy213/pokeapi/blob/media/4.png" />
 </div>
 
 ## 🛠 Installation
 
 Node version: v14.18.0
+
 React version: v18.2.0
 
 1. Installation for client
