@@ -31,20 +31,20 @@ const pokemonSlice = createSlice({
     error: null,
   },
   reducers: {},
-  extraReducers: {
-    [fetchPokemon.pending]: (state) => {
+  extraReducers: (builder) => {
+    builder.addCase(fetchPokemon.pending, (state) => {
       state.isLoading = true
-    },
-    [fetchPokemon.fulfilled]: (state, action) => {
+    })
+    builder.addCase(fetchPokemon.fulfilled, (state, action) => {
       state.isLoading = false
       state.data = action.payload.results
       state.count = action.payload.count
       state.pageCount = action.payload.pageCount
-    },
-    [fetchPokemon.rejected]: (state, action) => {
+    })
+    builder.addCase(fetchPokemon.rejected, (state, action) => {
       state.isLoading = false
       state.error = action.error
-    },
+    })
   },
 })
 

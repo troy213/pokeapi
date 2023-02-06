@@ -18,19 +18,19 @@ const pokemonDetailSlice = createSlice({
     error: null,
   },
   reducers: {},
-  extraReducers: {
-    [fetchPokemonDetail.pending]: (state) => {
+  extraReducers: (builder) => {
+    builder.addCase(fetchPokemonDetail.pending, (state) => {
       state.isLoading = true
-    },
-    [fetchPokemonDetail.fulfilled]: (state, action) => {
+    })
+    builder.addCase(fetchPokemonDetail.fulfilled, (state, action) => {
       state.isLoading = false
       state.data = action.payload
-    },
-    [fetchPokemonDetail.rejected]: (state, action) => {
+    })
+    builder.addCase(fetchPokemonDetail.rejected, (state, action) => {
       state.isLoading = false
       state.data = null
       state.error = action.error
-    },
+    })
   },
 })
 

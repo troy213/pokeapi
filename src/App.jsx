@@ -8,6 +8,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Layout />}>
           <Route path='/' element={<Dashboard />} />
+          <Route path='/page/:page' element={<Dashboard />} />
           <Route path='pokemon-detail/:id' element={<PokemonDetail />} />
         </Route>
         <Route path='*' element={<NotFound />} />

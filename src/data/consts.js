@@ -4,7 +4,7 @@ export const TYPE_COLOR = {
   fire: 'bg--fire',
   ghost: 'bg--ghost',
   normal: 'bg--normal',
-  phsycic: 'bg--phsycic',
+  psychic: 'bg--psychic',
   steel: 'bg--steel',
   dark: 'bg--dark',
   electric: 'bg--electric',
