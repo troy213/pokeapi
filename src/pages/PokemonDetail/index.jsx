@@ -51,8 +51,10 @@ const PokemonDetail = () => {
         </div>
         <div className='pokemon-detail__detail-container'>
           <div className='pokemon-detail__basic'>
-            <p className='text-3 text-light'>No.{data.id}</p>
-            <p className='text-6 text-bold text-capitalize'>{data.name}</p>
+            <div>
+              <p className='text-3'>No.{data.id}</p>
+              <p className='text-6 text-bold text-capitalize'>{data.name}</p>
+            </div>
             <div className='flex gap-2'>
               {data.types.map((type, index) => {
                 const {
