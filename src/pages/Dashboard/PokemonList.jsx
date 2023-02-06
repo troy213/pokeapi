@@ -33,6 +33,7 @@ const PokemonList = (props) => {
         const detail = {
           id,
           name,
+          types,
           type: types[0].type.name,
           sprite: front_default ? front_default : front_shiny,
         }

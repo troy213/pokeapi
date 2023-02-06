@@ -2,6 +2,17 @@
   .card {
     height: 350px;
     width: 200px;
+    margin-top: 0;
+
+    &__type-container {
+      top: -1rem;
+      left: 1rem;
+
+      & img {
+        height: 38px;
+        width: 38px;
+      }
+    }
 
     &__image-container {
       height: 200px;

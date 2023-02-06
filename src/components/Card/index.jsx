@@ -1,10 +1,15 @@
 import { Link } from 'react-router-dom'
-import { missingNoPng } from '../../assets/images'
-import { TYPE_COLOR } from '../../data/consts'
+import { missingNoPng, typeBugPng } from '../../assets/images'
+import { TYPE_COLOR, TYPE_TAG } from '../../data/consts'
 
 const Card = ({ detail }) => {
   return (
     <div className='card flex-column'>
+      <div className='card__type-container'>
+        {detail.types.map((item, index) => {
+          return <img src={TYPE_TAG[item.type.name]} alt='tag' key={index} />
+        })}
+      </div>
       <div
         className={`card__image-container ${
           TYPE_COLOR[detail.type] ?? 'bg--default'

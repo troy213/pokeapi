@@ -1,17 +1,36 @@
 .card {
+  position: relative;
   background-color: $color-light;
   height: 300px;
   width: 150px;
   border-radius: 0.5rem;
-  overflow: hidden;
   box-shadow: 0 0 16px rgba($color: #000000, $alpha: 0.25);
+  margin-top: 1rem;
   @include transition-ease(200ms);
+
+  &__type-container {
+    position: absolute;
+    top: -0.5rem;
+    left: 1rem;
+    display: flex;
+    gap: 0.5rem;
+
+    & img {
+      width: 25px;
+      height: 25px;
+      border: 2px solid white;
+      border-radius: 0.5rem;
+    }
+  }
 
   &__image-container {
     width: 100%;
     height: 150px;
     justify-content: center;
     align-items: center;
+    border-top-right-radius: 0.5rem;
+    border-top-left-radius: 0.5rem;
+    overflow: hidden;
     padding: 1em;
 
     & img {
