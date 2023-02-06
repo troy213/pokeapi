@@ -2,14 +2,17 @@ import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate, useParams } from 'react-router-dom'
 import ReactPaginate from 'react-paginate'
+import useScreenWidth from '../../hooks/useScreenWidth'
 import PokemonList from './PokemonList'
 import { fetchPokemon } from '../../store/pokemon-slice'
 
 const ITEM_PER_PAGE = 20
+const SCREEN_BREAK_POINT = 720
 
 const Dashboard = () => {
   const [itemOffset, setItemOffset] = useState(0)
 
+  const { screenWidth } = useScreenWidth()
   const navigate = useNavigate()
   const { page } = useParams()
   const pageOffset = page && (page - 1) * ITEM_PER_PAGE
@@ -39,7 +42,7 @@ const Dashboard = () => {
           breakLabel='...'
           nextLabel='next'
           onPageChange={handlePageClick}
-          pageRangeDisplayed={1}
+          pageRangeDisplayed={screenWidth >= SCREEN_BREAK_POINT ? 2 : 1}
           marginPagesDisplayed={1}
           pageCount={pageCount}
           forcePage={page ? page - 1 : 0}
