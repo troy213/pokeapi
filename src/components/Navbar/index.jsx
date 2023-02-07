@@ -8,7 +8,7 @@ const Navbar = () => {
   const navigate = useNavigate()
 
   const handleChange = (e) => {
-    const ALPHANUMERIC = /^[A-Za-z0-9 ]*$/
+    const ALPHANUMERIC = /^[A-Za-z0-9- ]*$/
     if (ALPHANUMERIC.test(e.target.value)) {
       setSearch(e.target.value)
     }
