@@ -20,7 +20,7 @@ const PokemonStats = ({ stats }) => {
             <div className='pokemon-detail__bar-chart'>
               <div
                 className='pokemon-detail__bar-chart-bar'
-                style={{ width: `${barWidthPercent}%` }}
+                style={{ maxWidth: `${barWidthPercent}%` }}
               ></div>
             </div>
           </div>
