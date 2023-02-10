@@ -11,7 +11,8 @@
     letter-spacing: 0.1em;
     color: $color-light !important;
     height: 33px;
-    top: -10px; // need to add this value because default behaviour of 'Pokemon Solid' font
+    display: flex;
+    align-items: center;
   }
 
   &__search-form {
