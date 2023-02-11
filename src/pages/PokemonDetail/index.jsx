@@ -6,7 +6,7 @@ import PokemonStats from './PokemonStats'
 import { Spinner } from '../../components'
 import { missingNoPng } from '../../assets/images'
 import { hectogramToKilogram, decimeterToMeter } from '../../utils'
-import { TYPE_COLOR } from '../../data/consts'
+import { TYPE_COLOR, TYPE_TAG } from '../../data/consts'
 
 const PokemonDetail = () => {
   const dispatch = useDispatch()
@@ -61,12 +61,15 @@ const PokemonDetail = () => {
                   type: { name },
                 } = type
                 return (
-                  <p
-                    className={`tag ${TYPE_COLOR[name] ?? 'bg--default'}`}
+                  <div
+                    className={`pokemon-detail__tag-wrapper tag ${
+                      TYPE_COLOR[name] ?? 'bg--default'
+                    }`}
                     key={index}
                   >
-                    {name}
-                  </p>
+                    <img src={TYPE_TAG[name]} alt='tag' key={index} />
+                    <p>{name}</p>
+                  </div>
                 )
               })}
             </div>
