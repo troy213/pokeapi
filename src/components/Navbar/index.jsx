@@ -17,7 +17,7 @@ const Navbar = () => {
   const handleSubmit = (e) => {
     e.preventDefault()
     if (!search) return navigate('/')
-    navigate(`/pokemon-detail/${search}`)
+    navigate(`/pokemon-detail/${search.toLowerCase()}`)
   }
 
   return (
