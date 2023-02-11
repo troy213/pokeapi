@@ -3,11 +3,12 @@
   padding: 2rem 1rem;
 
   &__content {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 150px);
     gap: 1rem;
+    width: 100%;
     max-width: 1200px;
+    justify-content: center;
   }
 }
 
