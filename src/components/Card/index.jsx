@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { missingNoPng, typeBugPng } from '../../assets/images'
+import { missingNoPng } from '../../assets/images'
 import { TYPE_COLOR, TYPE_TAG } from '../../data/consts'
 
 const Card = ({ detail }) => {

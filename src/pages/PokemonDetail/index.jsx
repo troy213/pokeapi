@@ -51,7 +51,7 @@ const PokemonDetail = () => {
         </div>
         <div className='pokemon-detail__detail-container'>
           <div className='pokemon-detail__basic'>
-            <div>
+            <div className='pokemon-detail__basic-title flex-column'>
               <p className='text-3'>No.{data.id}</p>
               <p className='text-6 text-bold text-capitalize'>{data.name}</p>
             </div>

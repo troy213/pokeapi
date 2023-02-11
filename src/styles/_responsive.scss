@@ -34,6 +34,10 @@
   }
 
   .pokemon-detail {
+    &__basic-title {
+      align-items: flex-start;
+    }
+
     &__detail {
       flex-direction: row;
     }
